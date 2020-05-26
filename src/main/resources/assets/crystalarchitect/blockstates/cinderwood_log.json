@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "block/cinderwood_log" },
+    "axis=z":   { "model": "block/cinderwood_log", "x": 90 },
+    "axis=x":   { "model": "block/cinderwood_log", "x": 90, "y": 90 }
+  }
+}
