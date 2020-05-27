@@ -5,6 +5,7 @@ import com.cinderous.crystalarchitect.blocks.*;
 import com.cinderous.crystalarchitect.items.CinderiteDust;
 import com.cinderous.crystalarchitect.items.ItemBase;
 import com.cinderous.crystalarchitect.world.biomes.CinderbaneBiome;
+import com.cinderous.crystalarchitect.world.feature.CinderwoodTree;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -48,8 +49,7 @@ public class RegistryHandler {
     public static final RegistryObject<Block> CINDIRT = BLOCKS.register("cindirt",
             () -> new Block(Block.Properties.from(Blocks.DIRT)));
 
-    public static final RegistryObject<Block> CINDIRT_GRASS = BLOCKS.register("cindirt_grass",
-            () -> new Block(Block.Properties.from(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Block> CINDIRT_GRASS = BLOCKS.register("cindirt_grass", CindirtGrass::new);
 
 
 
@@ -62,10 +62,10 @@ public class RegistryHandler {
             () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
 
     public static final RegistryObject<Block> CINDERWOOD_LEAVES = BLOCKS.register("cinderwood_leaves",
-            () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
+            () -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LOG)));
 
     public static final RegistryObject<Block> CINDERWOOD_SAPLING = BLOCKS.register("cinderwood_sapling",
-            () -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)));
+            () -> new CinderwoodSapling(() -> new CinderwoodTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
 
 
     //block items
@@ -86,10 +86,9 @@ public class RegistryHandler {
                     .waterColor(16762304).waterFogColor(66762304)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    //RegistryHandler.CINDERITE_MULCH.get().getDefaultState(),
-                                    Blocks.DIRT.getDefaultState(),
-                                    Blocks.COARSE_DIRT.getDefaultState(),
-                                    Blocks.GRANITE.getDefaultState()))
+                                    RegistryHandler.CINDIRT_GRASS.get().getDefaultState(),
+                                    RegistryHandler.CINDIRT.get().getDefaultState(),
+                                    RegistryHandler.CINDERITE_STONE.get().getDefaultState()))
                     .category(Biome.Category.PLAINS)
                     .downfall(0.5f)
                     .depth(0.12f)
