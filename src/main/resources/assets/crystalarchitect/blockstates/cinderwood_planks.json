@@ -1,5 +1,5 @@
 {
-    "variants": {
-        "": { "model": "block/cinderwood_planks" }
-    }
+  "variants": {
+    "": { "model": "crystalarchitect:block/cinderwood_planks" }
+  }
 }

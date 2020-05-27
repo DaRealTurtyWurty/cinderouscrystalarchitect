@@ -7,6 +7,7 @@ import com.cinderous.crystalarchitect.items.ItemBase;
 import com.cinderous.crystalarchitect.world.biomes.CinderbaneBiome;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -44,20 +45,40 @@ public class RegistryHandler {
     public static final RegistryObject<Block> CINDERITE_STONE = BLOCKS.register("cinderite_stone", CinderiteStone::new);
     public static final RegistryObject<Block> CINDERITE_MULCH = BLOCKS.register("cinderite_mulch", CinderiteMulch::new);
 
+    public static final RegistryObject<Block> CINDIRT = BLOCKS.register("cindirt",
+            () -> new Block(Block.Properties.from(Blocks.DIRT)));
+
+    public static final RegistryObject<Block> CINDIRT_GRASS = BLOCKS.register("cindirt_grass",
+            () -> new Block(Block.Properties.from(Blocks.GRASS_BLOCK)));
+
+
+
+
+
     public static final RegistryObject<Block> CINDERWOOD_PLANKS = BLOCKS.register("cinderwood_planks",
             () -> new Block(Block.Properties.from(Blocks.OAK_PLANKS)));
 
     public static final RegistryObject<Block> CINDERWOOD_LOG = BLOCKS.register("cinderwood_log",
             () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
 
+    public static final RegistryObject<Block> CINDERWOOD_LEAVES = BLOCKS.register("cinderwood_leaves",
+            () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
+
     public static final RegistryObject<Block> CINDERWOOD_SAPLING = BLOCKS.register("cinderwood_sapling",
-            () -> new CinderwoodSapling(null, Block.Properties.from(Blocks.OAK_SAPLING)));
+            () -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)));
 
 
     //block items
     public static final RegistryObject<Item> CINDERIUM_BLOCK_ITEM = ITEMS.register("cinderium_block", () -> new BlockItemBase(CINDERIUM_BLOCK.get()));
     public static final RegistryObject<Item> CINDERITE_STONE_ITEM = ITEMS.register("cinderite_stone", () -> new BlockItemBase(CINDERITE_STONE.get()));
     public static final RegistryObject<Item> CINDERITE_MULCH_ITEM = ITEMS.register("cinderite_mulch", () -> new BlockItemBase(CINDERITE_MULCH.get()));
+    public static final RegistryObject<Item> CINDIRT_ITEM = ITEMS.register("cindirt", () -> new BlockItemBase(CINDIRT.get()));
+    public static final RegistryObject<Item> CINDIRT_GRASS_ITEM = ITEMS.register("cindirt_grass", () -> new BlockItemBase(CINDIRT_GRASS.get()));
+
+    public static final RegistryObject<Item> CINDERWOOD_PLANKS_ITEM = ITEMS.register("cinderwood_planks", () -> new BlockItemBase(CINDERWOOD_PLANKS.get()));
+    public static final RegistryObject<Item> CINDERWOOD_LOG_ITEM = ITEMS.register("cinderwood_log", () -> new BlockItemBase(CINDERWOOD_LOG.get()));
+    public static final RegistryObject<Item> CINDERWOOD_LEAVES_ITEM = ITEMS.register("cinderwood_leaves", () -> new BlockItemBase(CINDERWOOD_LEAVES.get()));
+    public static final RegistryObject<Item> CINDERWOOD_SAPLING_ITEM = ITEMS.register("cinderwood_sapling", () -> new BlockItemBase(CINDERWOOD_SAPLING.get()));
 
     //biomes
     public static final RegistryObject<Biome> CINDERBANE = BIOMES.register("cinderbane_biome",
