@@ -62,7 +62,7 @@ public class RegistryHandler {
             () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
 
     public static final RegistryObject<Block> CINDERWOOD_LEAVES = BLOCKS.register("cinderwood_leaves",
-            () -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LOG)));
+            () -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)));
 
     public static final RegistryObject<Block> CINDERWOOD_SAPLING = BLOCKS.register("cinderwood_sapling",
             () -> new CinderwoodSapling(() -> new CinderwoodTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
