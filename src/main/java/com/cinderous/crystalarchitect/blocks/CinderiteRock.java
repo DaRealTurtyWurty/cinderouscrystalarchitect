@@ -1,6 +1,7 @@
 package com.cinderous.crystalarchitect.blocks;
 
 //import com.cinderous.crystalarchitect.particles.ColouredParticle;
+import com.cinderous.crystalarchitect.util.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -63,6 +64,7 @@ public class CinderiteRock extends Block {
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }
 
+
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.get(FACING)) {
@@ -112,6 +114,13 @@ public class CinderiteRock extends Block {
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
+
+    //@Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        Block block = state.getBlock();
+        return block == RegistryHandler.CINDIRT.get() || block == RegistryHandler.CINDIRT_GRASS.get();
+    }
+
 
 //    @Override
 //    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,

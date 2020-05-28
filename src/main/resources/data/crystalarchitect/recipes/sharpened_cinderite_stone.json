@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "crystalarchitect:cinderite_rock"
+    },
+    {
+      "item": "crystalarchitect:cinderite_rock"
+    }
+  ],
+  "result": {
+    "item": "crystalarchitect:sharpened_cinderite_rock"
+  }
+}
