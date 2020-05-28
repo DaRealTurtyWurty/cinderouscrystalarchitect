@@ -4,6 +4,7 @@ import com.cinderous.crystalarchitect.CrystalArchitect;
 import com.cinderous.crystalarchitect.blocks.*;
 import com.cinderous.crystalarchitect.items.CinderiteDust;
 import com.cinderous.crystalarchitect.items.ItemBase;
+import com.cinderous.crystalarchitect.particles.ColouredParticle;
 import com.cinderous.crystalarchitect.world.biomes.CinderbaneBiome;
 import com.cinderous.crystalarchitect.world.feature.CinderwoodTree;
 import net.minecraft.block.Block;
@@ -11,12 +12,17 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,14 +30,17 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RegistryHandler {
 
+    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, CrystalArchitect.MOD_ID);
 
     public static void init() {
+        PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
     }
 
 
@@ -39,11 +48,17 @@ public class RegistryHandler {
     //Items
     public static final RegistryObject<Item> CINDERIUM_INGOT = ITEMS.register("cinderium_ingot", ItemBase::new);
     public static final RegistryObject<Item> CINDERITE_DUST = ITEMS.register("cinderite_dust", CinderiteDust::new);
+  //  public static final RegistryObject<Item> CINDERITE_ROCK = ITEMS.register("cinderium_rock", ItemBase::new);
+
 
 
     //blocks
     public static final RegistryObject<Block> CINDERIUM_BLOCK = BLOCKS.register("cinderium_block", CinderiumBlock::new);
     public static final RegistryObject<Block> CINDERITE_STONE = BLOCKS.register("cinderite_stone", CinderiteStone::new);
+
+    public static final RegistryObject<Block> CINDERITE_ROCK = BLOCKS.register("cinderite_rock",
+            () -> new Block(Block.Properties.from(Blocks.STONE)));
+
     public static final RegistryObject<Block> CINDERITE_MULCH = BLOCKS.register("cinderite_mulch", CinderiteMulch::new);
 
     public static final RegistryObject<Block> CINDIRT = BLOCKS.register("cindirt",
@@ -102,5 +117,19 @@ public class RegistryHandler {
     public static void registerBiome(Biome biome, BiomeDictionary.Type... types) {
         BiomeDictionary.addTypes(biome, types);
         BiomeManager.addSpawnBiome(biome);
+    }
+
+    //particles
+
+
+    public static final RegistryObject<ParticleType<ColouredParticle.ColouredParticleData>> COLOURED_PARTICLE = PARTICLE_TYPES.register(
+            "coloured_particle",
+            () -> new ParticleType<ColouredParticle.ColouredParticleData>(false, ColouredParticle.ColouredParticleData.DESERIALIZER));
+
+    @SuppressWarnings("resource")
+    @SubscribeEvent
+    public static void registerParticleFactory(ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particles.registerFactory(RegistryHandler.COLOURED_PARTICLE.get(),
+                ColouredParticle.Factory::new);
     }
 }

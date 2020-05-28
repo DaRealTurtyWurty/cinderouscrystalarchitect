@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "crystalarchitect:block/cinderite_stone" },
+    "facing=south": { "model": "crystalarchitect:block/cinderite_stone", "y": 180 },
+    "facing=west":  { "model": "crystalarchitect:block/cinderite_stone", "y": 270 },
+    "facing=east":  { "model": "crystalarchitect:block/cinderite_stone", "y": 90 }
+  }
+}
