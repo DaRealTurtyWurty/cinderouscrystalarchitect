@@ -17,7 +17,7 @@ public class CinderwoodTree extends Tree {
     public static final TreeFeatureConfig CINDERWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(
             new SimpleBlockStateProvider(RegistryHandler.CINDERWOOD_LOG.get().getDefaultState()),
             new SimpleBlockStateProvider(RegistryHandler.CINDERWOOD_LEAVES.get().getDefaultState()),
-            new BlobFoliagePlacer(3, 0))).baseHeight(14).heightRandA(5).foliageHeight(9).ignoreVines()
+            new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(8).foliageHeight(3).ignoreVines()
             .setSapling((IPlantable) RegistryHandler.CINDERWOOD_SAPLING.get()).build();
 
     @Override

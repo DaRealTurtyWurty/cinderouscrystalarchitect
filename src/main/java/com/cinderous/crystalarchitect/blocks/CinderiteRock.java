@@ -1,6 +1,6 @@
 package com.cinderous.crystalarchitect.blocks;
 
-import com.cinderous.crystalarchitect.particles.ColouredParticle;
+//import com.cinderous.crystalarchitect.particles.ColouredParticle;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -113,16 +113,16 @@ public class CinderiteRock extends Block {
         builder.add(FACING);
     }
 
-    @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-                                             Hand handIn, BlockRayTraceResult result) {
-        /*
-         * if (!worldIn.isRemote()) { ServerWorld serverWorld = (ServerWorld) worldIn;
-         * LightningBoltEntity entity = new LightningBoltEntity(worldIn, pos.getX(),
-         * pos.getY(), pos.getZ(), false); serverWorld.addLightningBolt(entity); }
-         */
-        worldIn.addParticle(new ColouredParticle.ColouredParticleData(0.0f, 1.0f, 0.0f, 1.0f), pos.getX() + 0.5f,
-                pos.getY() + 0.5f, pos.getZ() + 0.5f, 0.0f, 0.0f, 0.0f);
-        return ActionResultType.SUCCESS;
-    }
+//    @Override
+//    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
+//                                             Hand handIn, BlockRayTraceResult result) {
+//        /*
+//         * if (!worldIn.isRemote()) { ServerWorld serverWorld = (ServerWorld) worldIn;
+//         * LightningBoltEntity entity = new LightningBoltEntity(worldIn, pos.getX(),
+//         * pos.getY(), pos.getZ(), false); serverWorld.addLightningBolt(entity); }
+//         */
+//        worldIn.addParticle(new ColouredParticle.ColouredParticleData(0.0f, 1.0f, 0.0f, 1.0f), pos.getX() + 0.5f,
+//                pos.getY() + 0.5f, pos.getZ() + 0.5f, 0.0f, 0.0f, 0.0f);
+//        return ActionResultType.SUCCESS;
+//    }
 }

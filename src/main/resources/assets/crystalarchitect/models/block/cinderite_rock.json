@@ -1,7 +1,7 @@
 {
   "credit": "Made with Blockbench",
   "textures": {
-    "0": "crystalarchitect:block/cinderite_stone"
+    "0": "crystalarchitect:blocks/cinderite_stone"
   },
   "elements": [
     {

@@ -4,7 +4,7 @@ import com.cinderous.crystalarchitect.CrystalArchitect;
 import com.cinderous.crystalarchitect.blocks.*;
 import com.cinderous.crystalarchitect.items.CinderiteDust;
 import com.cinderous.crystalarchitect.items.ItemBase;
-import com.cinderous.crystalarchitect.particles.ColouredParticle;
+//import com.cinderous.crystalarchitect.particles.ColouredParticle;
 import com.cinderous.crystalarchitect.world.biomes.CinderbaneBiome;
 import com.cinderous.crystalarchitect.world.feature.CinderwoodTree;
 import net.minecraft.block.Block;
@@ -30,13 +30,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RegistryHandler {
 
-    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, CrystalArchitect.MOD_ID);
+    //public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, CrystalArchitect.MOD_ID);
     public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, CrystalArchitect.MOD_ID);
 
     public static void init() {
-        PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+       // PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -56,8 +56,7 @@ public class RegistryHandler {
     public static final RegistryObject<Block> CINDERIUM_BLOCK = BLOCKS.register("cinderium_block", CinderiumBlock::new);
     public static final RegistryObject<Block> CINDERITE_STONE = BLOCKS.register("cinderite_stone", CinderiteStone::new);
 
-    public static final RegistryObject<Block> CINDERITE_ROCK = BLOCKS.register("cinderite_rock",
-            () -> new Block(Block.Properties.from(Blocks.STONE)));
+    public static final RegistryObject<Block> CINDERITE_ROCK = BLOCKS.register("cinderite_rock", CinderiteRock::new);
 
     public static final RegistryObject<Block> CINDERITE_MULCH = BLOCKS.register("cinderite_mulch", CinderiteMulch::new);
 
@@ -86,6 +85,7 @@ public class RegistryHandler {
     //block items
     public static final RegistryObject<Item> CINDERIUM_BLOCK_ITEM = ITEMS.register("cinderium_block", () -> new BlockItemBase(CINDERIUM_BLOCK.get()));
     public static final RegistryObject<Item> CINDERITE_STONE_ITEM = ITEMS.register("cinderite_stone", () -> new BlockItemBase(CINDERITE_STONE.get()));
+    public static final RegistryObject<Item> CINDERITE_ROCK_ITEM = ITEMS.register("cinderite_rock", () -> new BlockItemBase(CINDERITE_ROCK.get()));
     public static final RegistryObject<Item> CINDERITE_MULCH_ITEM = ITEMS.register("cinderite_mulch", () -> new BlockItemBase(CINDERITE_MULCH.get()));
     public static final RegistryObject<Item> CINDIRT_ITEM = ITEMS.register("cindirt", () -> new BlockItemBase(CINDIRT.get()));
     public static final RegistryObject<Item> CINDIRT_GRASS_ITEM = ITEMS.register("cindirt_grass", () -> new BlockItemBase(CINDIRT_GRASS.get()));
@@ -122,14 +122,14 @@ public class RegistryHandler {
     //particles
 
 
-    public static final RegistryObject<ParticleType<ColouredParticle.ColouredParticleData>> COLOURED_PARTICLE = PARTICLE_TYPES.register(
-            "coloured_particle",
-            () -> new ParticleType<ColouredParticle.ColouredParticleData>(false, ColouredParticle.ColouredParticleData.DESERIALIZER));
-
-    @SuppressWarnings("resource")
-    @SubscribeEvent
-    public static void registerParticleFactory(ParticleFactoryRegisterEvent event) {
-        Minecraft.getInstance().particles.registerFactory(RegistryHandler.COLOURED_PARTICLE.get(),
-                ColouredParticle.Factory::new);
-    }
+//    public static final RegistryObject<ParticleType<ColouredParticle.ColouredParticleData>> COLOURED_PARTICLE = PARTICLE_TYPES.register(
+//            "coloured_particle",
+//            () -> new ParticleType<ColouredParticle.ColouredParticleData>(false, ColouredParticle.ColouredParticleData.DESERIALIZER));
+//
+//    @SuppressWarnings("resource")
+//    @SubscribeEvent
+//    public static void registerParticleFactory(ParticleFactoryRegisterEvent event) {
+//        Minecraft.getInstance().particles.registerFactory(RegistryHandler.COLOURED_PARTICLE.get(),
+//                ColouredParticle.Factory::new);
+//    }
 }
